@@ -22,7 +22,9 @@
     "release:major": "node scripts/release.js major",
     "serve:simple": "SIMPLE_MODE=true npm run build && npm run preview -- --port 3000",
     "serve": "npm run build && npm run preview -- --port 3000",
-    "package": "node scripts/package-dist.js"
+    "package": "node scripts/package-dist.js",
+    "deploy:cloudflare": "npm run build && npx wrangler pages deploy dist --project-name=bentopdf",
+    "deploy:cloudflare:preview": "npm run build && npx wrangler pages deploy dist --project-name=bentopdf --branch=preview"
   },
   "devDependencies": {
     "@testing-library/dom": "^10.4.1",

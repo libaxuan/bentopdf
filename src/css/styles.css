@@ -48,10 +48,86 @@ html {
   scroll-behavior: smooth;
 }
 
+/* 默认深色主题 */
 body {
   font-family: 'DM Sans', sans-serif;
   background-color: #111827;
   color: #d1d5db;
+}
+
+/* 浅色主题 */
+.light-theme body {
+  background-color: #f9fafb;
+  color: #1f2937;
+}
+
+.light-theme nav {
+  background-color: #ffffff !important;
+  border-bottom-color: #e5e7eb !important;
+}
+
+.light-theme .bg-gray-800 {
+  background-color: #ffffff !important;
+  border-color: #e5e7eb !important;
+}
+
+.light-theme .bg-gray-700 {
+  background-color: #f3f4f6 !important;
+}
+
+.light-theme .bg-gray-900 {
+  background-color: #f9fafb !important;
+}
+
+.light-theme .text-white {
+  color: #111827 !important;
+}
+
+.light-theme .text-gray-300,
+.light-theme .text-gray-400 {
+  color: #6b7280 !important;
+}
+
+.light-theme .text-gray-200 {
+  color: #374151 !important;
+}
+
+.light-theme .border-gray-700 {
+  border-color: #e5e7eb !important;
+}
+
+.light-theme .border-gray-600 {
+  border-color: #d1d5db !important;
+}
+
+.light-theme .tool-card {
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+}
+
+.light-theme .tool-card:hover {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  border-color: #6366f1;
+}
+
+.light-theme .nav-link {
+  color: #4b5563 !important;
+}
+
+.light-theme .nav-link:hover {
+  background-color: #f3f4f6 !important;
+  color: #111827 !important;
+}
+
+.light-theme ::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+
+.light-theme ::-webkit-scrollbar-thumb {
+  background: #9ca3af;
+}
+
+.light-theme ::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
 }
 
 .tool-card {
@@ -598,4 +674,109 @@ input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none; /* Chrome, Safari, Edge */
   margin: 0;
+}
+
+/* Theme Toggle Button Styles */
+#theme-toggle,
+#theme-toggle-mobile {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+#theme-toggle:hover,
+#theme-toggle-mobile:hover {
+  background-color: #374151;
+  transform: rotate(15deg);
+}
+
+#theme-toggle i,
+#theme-toggle-mobile i {
+  transition: all 0.3s ease;
+}
+
+/* Theme icon animations */
+@keyframes rotate-sun {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+#theme-icon-sun:not(.hidden),
+#theme-icon-moon:not(.hidden),
+#theme-icon-sun-mobile:not(.hidden),
+#theme-icon-moon-mobile:not(.hidden) {
+  animation: fade-in 0.3s ease;
+}
+
+/* Light theme specific button styling */
+.light-theme #theme-toggle,
+.light-theme #theme-toggle-mobile {
+  color: #f59e0b;
+}
+
+.light-theme #theme-toggle:hover,
+.light-theme #theme-toggle-mobile:hover {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+/* Dark theme specific button styling */
+.dark-theme #theme-toggle,
+.dark-theme #theme-toggle-mobile {
+  color: #60a5fa;
+}
+
+.dark-theme #theme-toggle:hover,
+.dark-theme #theme-toggle-mobile:hover {
+  background-color: #1e3a8a;
+  color: #93c5fd;
+}
+
+/* Language switcher in nav styling */
+#nav-language-switcher .relative,
+#nav-language-switcher-mobile .relative {
+  display: inline-flex;
+}
+
+.light-theme #nav-language-switcher button,
+.light-theme #nav-language-switcher-mobile button {
+  background-color: #f3f4f6 !important;
+  color: #374151 !important;
+  border-color: #d1d5db !important;
+}
+
+.light-theme #nav-language-switcher button:hover,
+.light-theme #nav-language-switcher-mobile button:hover {
+  background-color: #e5e7eb !important;
+  border-color: #9ca3af !important;
+}
+
+.light-theme #nav-language-switcher [role="menu"],
+.light-theme #nav-language-switcher-mobile [role="menu"] {
+  background-color: #ffffff !important;
+  border-color: #d1d5db !important;
+}
+
+.light-theme #nav-language-switcher [role="menu"] button,
+.light-theme #nav-language-switcher-mobile [role="menu"] button {
+  color: #374151 !important;
+}
+
+.light-theme #nav-language-switcher [role="menu"] button:hover,
+.light-theme #nav-language-switcher-mobile [role="menu"] button:hover {
+  background-color: #f3f4f6 !important;
 }

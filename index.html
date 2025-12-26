@@ -35,6 +35,18 @@
           <a href="./contact.html" class="nav-link" data-i18n="nav.contact">Contact</a>
           <a href="./licensing.html" class="nav-link" data-i18n="nav.licensing">Licensing</a>
           <a href="index.html#tools-header" class="nav-link" data-i18n="nav.allTools">All Tools</a>
+          
+          <!-- Language Switcher -->
+          <div id="nav-language-switcher" class="relative"></div>
+          
+          <!-- Theme Toggle Button -->
+          <button id="theme-toggle" type="button"
+            class="inline-flex items-center justify-center p-2 rounded-full text-gray-400 hover:text-white hover:bg-gray-700 transition-colors"
+            aria-label="Toggle theme">
+            <i id="theme-icon-sun" data-lucide="sun" class="w-5 h-5"></i>
+            <i id="theme-icon-moon" data-lucide="moon" class="w-5 h-5 hidden"></i>
+          </button>
+          
           <a href="https://github.com/alam00000/bentopdf/" target="_blank" rel="noopener noreferrer" class="
             inline-flex items-center gap-1.5 text-sm font-medium
             bg-gray-800 text-gray-200 border border-gray-600
@@ -52,7 +64,18 @@
         </div>
 
         <!-- Mobile Hamburger Button -->
-        <div class="md:hidden flex items-center gap-4">
+        <div class="md:hidden flex items-center gap-2">
+          <!-- Mobile Language Switcher -->
+          <div id="nav-language-switcher-mobile" class="relative"></div>
+          
+          <!-- Mobile Theme Toggle -->
+          <button id="theme-toggle-mobile" type="button"
+            class="inline-flex items-center justify-center p-2 rounded-full text-gray-400 hover:text-white hover:bg-gray-700 transition-colors"
+            aria-label="Toggle theme">
+            <i id="theme-icon-sun-mobile" data-lucide="sun" class="w-5 h-5"></i>
+            <i id="theme-icon-moon-mobile" data-lucide="moon" class="w-5 h-5 hidden"></i>
+          </button>
+          
           <a href="https://github.com/alam00000/bentopdf/" target="_blank" rel="noopener noreferrer" class="
             inline-flex items-center gap-1.5 text-sm font-medium
             bg-gray-800 text-gray-200 border border-gray-600

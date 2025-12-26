@@ -24,7 +24,7 @@ export const getLanguageFromUrl = (): SupportedLanguage => {
         return storedLang as SupportedLanguage;
     }
 
-    return 'en';
+    return 'zh';
 };
 
 let initialized = false;
@@ -39,7 +39,7 @@ export const initI18n = async (): Promise<typeof i18next> => {
         .use(LanguageDetector)
         .init({
             lng: currentLang,
-            fallbackLng: 'en',
+            fallbackLng: 'zh',
             supportedLngs: supportedLanguages as unknown as string[],
             ns: ['common', 'tools'],
             defaultNS: 'common',
@@ -120,7 +120,7 @@ export const applyTranslations = (): void => {
 
 export const rewriteLinks = (): void => {
     const currentLang = getLanguageFromUrl();
-    if (currentLang === 'en') return;
+    if (currentLang === 'zh') return;
 
     const links = document.querySelectorAll('a[href]');
     links.forEach((link) => {

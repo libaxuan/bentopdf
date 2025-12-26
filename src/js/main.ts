@@ -8,9 +8,20 @@ import '../css/styles.css';
 import { formatShortcutDisplay, formatStars } from './utils/helpers.js';
 import { APP_VERSION, injectVersion } from '../version.js';
 import { initI18n, applyTranslations, rewriteLinks, injectLanguageSwitcher, createLanguageSwitcher, t } from './i18n/index.js';
+import { ThemeManager } from './theme/theme.js';
 
 const init = async () => {
   await initI18n();
+  
+  // Initialize theme manager
+  ThemeManager.init();
+  
+  // Setup theme toggle buttons
+  setupThemeToggle();
+  
+  // Setup navigation language switchers
+  setupNavLanguageSwitchers();
+  
   injectLanguageSwitcher();
   applyTranslations();
 
@@ -936,5 +947,92 @@ const init = async () => {
   // Rewrite links after all dynamic content is fully loaded
   rewriteLinks();
 };
+
+// Setup theme toggle functionality
+function setupThemeToggle() {
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+  const sunIcon = document.getElementById('theme-icon-sun');
+  const moonIcon = document.getElementById('theme-icon-moon');
+  const sunIconMobile = document.getElementById('theme-icon-sun-mobile');
+  const moonIconMobile = document.getElementById('theme-icon-moon-mobile');
+
+  function updateThemeIcons() {
+    const currentTheme = ThemeManager.getTheme();
+    const isLight = currentTheme === 'light';
+    
+    // Desktop icons
+    if (sunIcon && moonIcon) {
+      sunIcon.classList.toggle('hidden', isLight);
+      moonIcon.classList.toggle('hidden', !isLight);
+    }
+    
+    // Mobile icons
+    if (sunIconMobile && moonIconMobile) {
+      sunIconMobile.classList.toggle('hidden', isLight);
+      moonIconMobile.classList.toggle('hidden', !isLight);
+    }
+  }
+
+  // Initial icon update
+  updateThemeIcons();
+
+  // Desktop toggle
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      ThemeManager.toggleTheme();
+      updateThemeIcons();
+    });
+  }
+
+  // Mobile toggle
+  if (themeToggleMobile) {
+    themeToggleMobile.addEventListener('click', () => {
+      ThemeManager.toggleTheme();
+      updateThemeIcons();
+    });
+  }
+
+  // Listen for theme changes from other sources
+  window.addEventListener('themechange', () => {
+    updateThemeIcons();
+  });
+}
+
+// Setup navigation language switchers
+function setupNavLanguageSwitchers() {
+  const navLangSwitcher = document.getElementById('nav-language-switcher');
+  const navLangSwitcherMobile = document.getElementById('nav-language-switcher-mobile');
+
+  if (navLangSwitcher) {
+    const switcher = createLanguageSwitcher();
+    // Adjust styling for nav placement
+    const button = switcher.querySelector('button');
+    if (button) {
+      button.className = `
+        inline-flex items-center gap-1.5 text-sm font-medium
+        bg-gray-800 text-gray-200 border border-gray-600
+        px-3 py-1.5 rounded-full transition-colors duration-200
+        shadow-sm hover:shadow-md hover:bg-gray-700
+      `.trim();
+    }
+    navLangSwitcher.appendChild(switcher);
+  }
+
+  if (navLangSwitcherMobile) {
+    const switcher = createLanguageSwitcher();
+    // Adjust styling for mobile nav
+    const button = switcher.querySelector('button');
+    if (button) {
+      button.className = `
+        inline-flex items-center gap-1.5 text-sm font-medium
+        bg-gray-800 text-gray-200 border border-gray-600
+        px-2.5 py-1.5 rounded-full transition-colors duration-200
+        shadow-sm hover:shadow-md hover:bg-gray-700
+      `.trim();
+    }
+    navLangSwitcherMobile.appendChild(switcher);
+  }
+}
 
 window.addEventListener('load', init);

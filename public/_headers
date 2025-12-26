@@ -1,0 +1,43 @@
+# Cloudflare Pages Headers Configuration
+# These headers ensure proper functionality of PDF processing features
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Enable COOP and COEP for SharedArrayBuffer support (required for WASM)
+/*.html
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Embedder-Policy: require-corp
+
+# WASM files
+/*.wasm
+  Content-Type: application/wasm
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Embedder-Policy: require-corp
+
+# JavaScript modules
+/*.mjs
+  Content-Type: application/javascript
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Embedder-Policy: require-corp
+
+# Worker files
+/*worker*.js
+  Content-Type: application/javascript
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Embedder-Policy: require-corp
+
+# Cache control for static assets
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache control for images
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Locales
+/locales/*
+  Cache-Control: public, max-age=86400

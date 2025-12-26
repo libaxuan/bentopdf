@@ -1,0 +1,11 @@
+# Cloudflare Pages Redirects Configuration
+# Handle SPA routing and language-based URLs
+
+# Language-based redirects
+/en/* /index.html 200
+/de/* /index.html 200
+/zh/* /index.html 200
+/vi/* /index.html 200
+
+# Fallback for SPA routing - must be last
+/* /index.html 200

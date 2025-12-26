@@ -174,6 +174,7 @@ You can run BentoPDF locally for development or personal use.
 ### 🚀 Quick Start with Docker
 
 [![Deploy on Zeabur](https://zeabur.com/button.svg)](https://zeabur.com/templates/K4AU2B)
+[![Deploy to Cloudflare Pages](https://img.shields.io/badge/Deploy%20to-Cloudflare%20Pages-orange?style=for-the-badge&logo=cloudflare)](./CLOUDFLARE_DEPLOYMENT.md)
 
 You can run BentoPDF directly from Docker Hub or GitHub Container Registry without cloning the repository:
 
@@ -195,6 +196,44 @@ docker run -p 3000:8080 ghcr.io/alam00000/bentopdf:latest
 Open your browser at: http://localhost:3000
 
 This is the fastest way to try BentoPDF without setting up a development environment.
+
+### ☁️ Deploy to Cloudflare Pages
+
+BentoPDF can be easily deployed to Cloudflare Pages for free hosting with global CDN:
+
+**Quick Deploy via Dashboard:**
+1. Fork this repository to your GitHub account
+2. Login to [Cloudflare Pages](https://dash.cloudflare.com/pages)
+3. Create a new project and connect your GitHub repository
+4. Use these build settings:
+   - **Build command:** `npm run build`
+   - **Build output directory:** `dist`
+   - **Framework preset:** Vite
+5. Deploy and get your free `*.pages.dev` URL
+
+**Deploy via Wrangler CLI:**
+```bash
+# Build the project
+npm run build
+
+# Login to Cloudflare (using npx to avoid global installation issues)
+npx wrangler login
+
+# Deploy to Cloudflare Pages
+npx wrangler pages deploy dist --project-name=bentopdf
+```
+
+> **Note for macOS ARM64 users**: If you encounter `@cloudflare/workerd-darwin-arm64` errors, use `npx wrangler` instead of global installation, or refer to the [Cloudflare Deployment Guide](./CLOUDFLARE_DEPLOYMENT.md) for detailed troubleshooting.
+
+For detailed instructions, custom domains, and advanced configuration, see our [Cloudflare Deployment Guide](./CLOUDFLARE_DEPLOYMENT.md).
+
+**Benefits of Cloudflare Pages:**
+- ✅ Free hosting with unlimited bandwidth
+- ✅ Global CDN with edge caching
+- ✅ Automatic HTTPS with SSL certificates
+- ✅ DDoS protection and WAF
+- ✅ Instant rollbacks and preview deployments
+- ✅ Custom domains with automatic SSL
 
 ### 🏠 Self-Hosting
 

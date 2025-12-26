@@ -27,3 +27,10 @@ dist-ssr
 coverage/
 *.lcov
 
+# Cloudflare
+.wrangler/
+wrangler.toml.local
+.dev.vars
+
+# Cloudflare Pages
+.vercel
